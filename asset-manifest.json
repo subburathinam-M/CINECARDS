@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CINECARDS/static/css/main.98604e41.css",
-    "main.js": "/CINECARDS/static/js/main.f7e4d2e1.js",
+    "main.css": "/CINECARDS/static/css/main.790a9a4f.css",
+    "main.js": "/CINECARDS/static/js/main.26010dfd.js",
     "index.html": "/CINECARDS/index.html",
-    "main.98604e41.css.map": "/CINECARDS/static/css/main.98604e41.css.map",
-    "main.f7e4d2e1.js.map": "/CINECARDS/static/js/main.f7e4d2e1.js.map"
+    "main.790a9a4f.css.map": "/CINECARDS/static/css/main.790a9a4f.css.map",
+    "main.26010dfd.js.map": "/CINECARDS/static/js/main.26010dfd.js.map"
   },
   "entrypoints": [
-    "static/css/main.98604e41.css",
-    "static/js/main.f7e4d2e1.js"
+    "static/css/main.790a9a4f.css",
+    "static/js/main.26010dfd.js"
   ]
 }

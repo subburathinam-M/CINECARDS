@@ -18,7 +18,7 @@
         {
         id: 2,
         title: "The Shawshank Redemption",
-        poster: "/images/movie-posters/shawshank.jpg",
+        poster: "https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/5/y/5/medium-hope-shawshank-redemption-poster-for-room-office-13-inch-original-imahby7ymhgs2njn.jpeg",
         banner: "/images/banners/shawshank.jpg",
         description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
         rating: 9.3,

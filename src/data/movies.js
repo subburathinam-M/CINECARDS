@@ -66,8 +66,8 @@
         {
         id: 5,
         title: "Kaithi",
-        poster: "/images/movie-posters/kaithi.jpg",
-        banner: "/images/banners/kaithi.jpg",
+        poster: "https://m.media-amazon.com/images/M/MV5BZDk2NWQyMjQtODlkYi00YTJjLTkxMGItMGU0ZDExODI3OWIxXkEyXkFqcGc@._V1_.jpg",
+        banner: "https://pbs.twimg.com/media/EHkM7vXWwAAAild.jpg",
         description: "A recently released prisoner decides to meet his daughter for the first time after being imprisoned, but gets caught up in a police raid.",
         rating: 8.5,
         year: 2019,
@@ -77,13 +77,13 @@
         likes: 3610,
         dislikes: 189,
         isAdult: false,
-        trailerId: "e5o5m5x5w5M"
+        trailerId: "g79CvhHaj5I"
         },
         {
         id: 6,
         title: "Vikram",
-        poster: "/images/movie-posters/vikram.jpg",
-        banner: "/images/banners/vikram.jpg",
+        poster: "https://www.tallengestore.com/cdn/shop/files/Vikram-KamalHaasan-TamilMoviePoster2_6e0dd72c-0b9f-472d-91ae-a92291a76c96.jpg?v=1714521539",
+        banner: "https://m.media-amazon.com/images/M/MV5BY2MwMDZiMDItZDNlOS00Nzk5LWIzMjEtMjk1NWRmMDdhNjE1XkEyXkFqcGc@._V1_.jpg",
         description: "A special agent investigates a murder committed by a masked group of serial killers. However, a tangled maze of clues soon leads him to the drug kingpin of Chennai.",
         rating: 8.4,
         year: 2022,
@@ -98,8 +98,8 @@
         {
         id: 7,
         title: "Jai Bhim",
-        poster: "/images/movie-posters/jai-bhim.jpg",
-        banner: "/images/banners/jai-bhim.jpg",
+        poster: "https://rukminim2.flixcart.com/image/850/1000/kx3l0nk0/poster/0/e/a/medium-jai-bhim-1218-original-imag9m4bqstbw8gz.jpeg?q=20&crop=false",
+        banner: "https://images.indianexpress.com/2021/07/jai-bhim-1200.jpg",
         description: "A tribal woman and a righteous lawyer battle in court to unravel the mystery around the disappearance of her husband, who was picked up the police on a false case.",
         rating: 8.8,
         year: 2021,
@@ -114,8 +114,8 @@
         {
         id: 8,
         title: "Premam",
-        poster: "/images/movie-posters/premam.jpg",
-        banner: "/images/banners/premam.jpg",
+        poster: "https://m.media-amazon.com/images/M/MV5BNWJiMWMxYmMtNTQxMy00ZjE2LWEzYTAtNTdmODI4MGI4OTRlXkEyXkFqcGc@._V1_.jpg",
+        banner: "https://i.pinimg.com/736x/a0/10/1d/a0101d1cd1a6611b7c0ac01bcfd06342.jpg",
         description: "A young man's life from college to adulthood, and the women he loves at different stages of his life.",
         rating: 8.3,
         year: 2015,
@@ -125,13 +125,13 @@
         likes: 3870,
         dislikes: 145,
         isAdult: false,
-        trailerId: "z7yqtW4Isec"
+        trailerId: "pbgvTikmIMk"
         },
         {
         id: 9,
         title: "Baahubali: The Beginning",
-        poster: "/images/movie-posters/baahubali.jpg",
-        banner: "/images/banners/baahubali.jpg",
+        poster: "https://m.media-amazon.com/images/M/MV5BM2YxZThhZmEtYzM0Yi00OWYxLWI4NGYtM2Y2ZDNmOGE0ZWQzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        banner: "https://lh3.googleusercontent.com/proxy/_Z6MYMi3_FS4VVLKevtenzz6VQ-8nv3DRx3Q4PZEovsDTauXPRLQ-Wq0s8ZqtfksOQhEKHDM1ljRBgt2RpneQf7mCvD6zO8IVjHbKfOUg19a2e88d4ZzrumCMkcbGHd4tGXDxMAc59epaU7kmQ",
         description: "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy.",
         rating: 8.0,
         year: 2015,
@@ -146,8 +146,8 @@
         {
         id: 10,
         title: "Interstellar",
-        poster: "/images/movie-posters/interstellar.jpg",
-        banner: "/images/banners/interstellar.jpg",
+        poster: "https://m.media-amazon.com/images/I/514zBLkyJcL.jpg",
+        banner: "https://img.englishcinemakyiv.com/nKizXKvqQfZzAMBylGXBi7TuU37mFVp7Mb9phhtftSw/resize:fill:800:450:1:0/gravity:sm/aHR0cHM6Ly9leHBhdGNpbmVtYXByb2QuYmxvYi5jb3JlLndpbmRvd3MubmV0L2ltYWdlcy82MGMzNzFhMy0yNzQyLTQwZWYtYTQwOS1kMzE0NmI0YTNlNDQuanBn.jpg",
         description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
         rating: 8.6,
         year: 2014,

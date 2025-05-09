@@ -1,8 +1,10 @@
-    import { useParams } from 'react-router-dom';
-    import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages, Calendar } from 'lucide-react';
+    import { useParams ,useNavigate } from 'react-router-dom';
+    import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages, Calendar,ArrowLeft } from 'lucide-react';
     import movies from '../../data/movies';
+    
 
     const MovieDetail = () => {
+    const navigate = useNavigate(); // Initialize navigate
     const { id } = useParams();
     const movie = movies.find(m => m.id === parseInt(id));
 
@@ -29,6 +31,16 @@
 
     return (
         <div className="max-w-6xl mx-auto">
+
+             {/* Back Button */}
+      <button 
+        onClick={() => navigate(-1)}
+        className="absolute top-4 left-4 z-50 flex items-center text-white hover:text-blue-400"
+      >
+        <ArrowLeft className="w-6 h-6 mr-1" />
+        Back
+      </button>
+            
         {/* Banner */}
         <div className="relative aspect-[21/9] w-full">
             <img 

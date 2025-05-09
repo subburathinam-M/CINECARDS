@@ -30,11 +30,11 @@
     return (
         <div className="max-w-6xl mx-auto">
         {/* Banner */}
-        <div className="relative h-64 md:h-96 w-full">
+        <div className="relative aspect-[21/9] w-full">
             <img 
             src={movie.banner} 
             alt={movie.title} 
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
             {movie.isAdult && (

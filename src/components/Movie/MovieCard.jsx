@@ -22,17 +22,39 @@
     return (
         <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
         <Link to={`/movie/${movie.id}`}>
-            <div className="relative">
+            <div className="relative h-64 bg-gray-700 flex items-center justify-center overflow-hidden">
             <img 
                 src={movie.poster} 
                 alt={movie.title} 
-                className="w-full h-64 object-cover"
+                className="w-full h-auto object-cover"
             />
-            {movie.isAdult && (
-                <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                18+
-                </div>
-            )}
+
+{/* 18+ Badge - Top Right Corner */}
+{movie.isAdult && (
+  <div className="absolute top-2 right-2">
+    <div className="bg-red-500 text-white text-xs font-bold w-10 h-6 flex items-center justify-center rounded">
+      18+
+    </div>
+  </div>
+)}
+
+{/* Language Badge - Adjust top based on 18+ presence */}
+<div className={`absolute ${movie.isAdult ? 'top-10' : 'top-2'} right-2`}>
+  <div className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+    {movie.language}
+  </div>
+</div>
+
+
+     {/* Title Overlay
+     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
+      <h3 className="text-white font-bold text-lg truncate">{movie.title}</h3>
+      <div className="flex items-center mt-2 text-sm text-gray-300">
+        <Star className="w-4 h-4 mr-1 text-yellow-400" />
+        <span>{movie.rating}</span>
+      </div>
+    </div> */}
+
             </div>
         </Link>
 

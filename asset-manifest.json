@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/cinecards/static/css/main.486ef4d1.css",
-    "main.js": "/cinecards/static/js/main.cc230647.js",
-    "index.html": "/cinecards/index.html",
-    "main.486ef4d1.css.map": "/cinecards/static/css/main.486ef4d1.css.map",
-    "main.cc230647.js.map": "/cinecards/static/js/main.cc230647.js.map"
+    "main.css": "/CINECARDS/static/css/main.486ef4d1.css",
+    "main.js": "/CINECARDS/static/js/main.cc230647.js",
+    "index.html": "/CINECARDS/index.html",
+    "main.486ef4d1.css.map": "/CINECARDS/static/css/main.486ef4d1.css.map",
+    "main.cc230647.js.map": "/CINECARDS/static/js/main.cc230647.js.map"
   },
   "entrypoints": [
     "static/css/main.486ef4d1.css",

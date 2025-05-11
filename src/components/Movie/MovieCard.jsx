@@ -1,110 +1,166 @@
-    import { Link } from 'react-router-dom';
-    import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages } from 'lucide-react';
+import PropTypes from 'prop-types';
 
-    const MovieCard = ({ movie }) => {
-    const genreIcons = {
-        'Action': '🎬',
-        'Comedy': '😂',
-        'Drama': '🎭',
-        'Horror': '😱',
-        'Mystery': '🕵️',
-        'Sci-Fi': '🚀',
-        'Romance': '💖',
-        'Musical': '🎵',
-        'Historical': '📜',
-        'Thriller': '👻',
-        'Fantasy': '🧙',
-        'Animation': '🎨',
-        'Crime': '🔫',
-        'Adventure': '🏕️'
-    };
+// Color mapping utility
+const getLangColor = (lang) => {
+  const colors = {
+    tamil: 'bg-blue-500',
+    telugu: 'bg-orange-500',
+    hindi: 'bg-green-500',
+    malayalam: 'bg-yellow-500',
+    kannada: 'bg-purple-500',
+    korean: 'bg-red-500',
+    spanish: 'bg-pink-500',
+    japanese: 'bg-indigo-500',
+    portuguese: 'bg-teal-500',
+    english: 'bg-gray-500'
+  };
+  
+  const normalizedLang = (lang || '').toLowerCase();
+  return colors[normalizedLang] || 'bg-gray-400';
+};
 
-    return (
-        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <Link to={`/movie/${movie.id}`}>
-            <div className="relative h-64 bg-gray-700 flex items-center justify-center overflow-hidden">
-            <img 
-                src={movie.poster} 
-                alt={movie.title} 
-                className="w-full h-auto object-cover"
-            />
+const MovieCard = ({ movie = {} }) => {
+  const genreIcons = {
+    'Action': '🎬',
+    'Comedy': '😂',
+    'Drama': '🎭',
+    'Horror': '😱',
+    'Mystery': '🕵️',
+    'Sci-Fi': '🚀',
+    'Romance': '💖',
+    'Musical': '🎵',
+    'Historical': '📜',
+    'Thriller': '👻',
+    'Fantasy': '🧙',
+    'Animation': '🎨',
+    'Crime': '🔫',
+    'Adventure': '🏕️'
+  };
 
-{/* 18+ Badge - Top Right Corner */}
-{movie.isAdult && (
-  <div className="absolute top-2 right-2">
-    <div className="bg-red-500 text-white text-xs font-bold w-10 h-6 flex items-center justify-center rounded">
-      18+
-    </div>
-  </div>
-)}
+  // Default values for movie prop
+  const {
+    id = '',
+    title = '',
+    originalLanguage = 'Unknown',
+    dubbedLangs = [],
+    isAdult = false,
+    poster = '',
+    rating = '0.0',
+    duration = '0',
+    description = '',
+    genres = [],
+    likes = 0,
+    dislikes = 0
+  } = movie;
 
-{/* Language Badge - Adjust top based on 18+ presence */}
-<div className={`absolute ${movie.isAdult ? 'top-10' : 'top-2'} right-2`}>
-  <div className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-    {movie.language}
-  </div>
-</div>
+  return (
+    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <Link to={`/movie/${id}`}>
+        <div className="relative h-64 bg-gray-700 flex items-center justify-center overflow-hidden">
+          <img 
+            src={poster} 
+            alt={title} 
+            className="w-full h-auto object-cover"
+          />
 
-
-     {/* Title Overlay
-     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
-      <h3 className="text-white font-bold text-lg truncate">{movie.title}</h3>
-      <div className="flex items-center mt-2 text-sm text-gray-300">
-        <Star className="w-4 h-4 mr-1 text-yellow-400" />
-        <span>{movie.rating}</span>
-      </div>
-    </div> */}
-
+          {isAdult && (
+            <div className="absolute top-2 right-2">
+              <div className="bg-red-500 text-white text-xs font-bold w-10 h-6 flex items-center justify-center rounded">
+                18+
+              </div>
             </div>
-        </Link>
+          )}
 
-        <div className="p-4">
-            <div className="flex justify-between items-start mb-2">
-            <Link to={`/movie/${movie.id}`} className="text-xl font-bold hover:text-blue-400">
-                {movie.title}
-            </Link>
-            <div className="flex items-center bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold">
-                <Star className="w-4 h-4 mr-1" />
-                {movie.rating}
-            </div>
-            </div>
-
-            <div className="flex items-center text-sm text-gray-400 mb-2">
-            <Languages className="w-4 h-4 mr-1" />
-            <span className="mr-3">{movie.language}</span>
-            <Clock className="w-4 h-4 mr-1" />
-            <span>{movie.duration} mins</span>
-            </div>
-
-            <p className="text-gray-300 text-sm mb-3 line-clamp-2">{movie.description}</p>
-
-            <div className="flex flex-wrap gap-2 mb-3">
-            {movie.genres.map(genre => (
-                <span key={genre} className="bg-gray-700 px-2 py-1 rounded-full text-xs">
-                {genreIcons[genre] || '🎬'} {genre}
-                </span>
-            ))}
+          <div className={`absolute ${isAdult ? 'top-10' : 'top-2'} right-2 flex gap-2  flex-col items-end gap-2`}>
+            <div className={`${getLangColor(originalLanguage)} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+              {originalLanguage}
             </div>
 
-            <div className="flex justify-between items-center">
-            <div className="flex space-x-2">
-                <button className="flex items-center text-gray-400 hover:text-green-500">
-                <ThumbsUp className="w-4 h-4 mr-1" />
-                <span>{movie.likes}</span>
-                </button>
-                <button className="flex items-center text-gray-400 hover:text-red-500">
-                <ThumbsDown className="w-4 h-4 mr-1" />
-                <span>{movie.dislikes}</span>
-                </button>
-            </div>
-            <button className="text-gray-400 hover:text-red-500">
-                <Heart className="w-5 h-5" />
+            {dubbedLangs.length > 0 && (
+              <div className="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                {dubbedLangs.length === 1 
+                  ? `+${dubbedLangs[0]}`
+                  : `+${dubbedLangs.length} langs`}
+              </div>
+            )}
+          </div>
+        </div>
+      </Link>
+
+      <div className="p-4">
+        <div className="flex justify-between items-start mb-2">
+          <Link to={`/movie/${id}`} className="text-xl font-bold hover:text-blue-400">
+            {title}
+          </Link>
+          <div className="flex items-center bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold">
+            <Star className="w-4 h-4 mr-1" />
+            {rating}
+          </div>
+        </div>
+
+        <div className="flex items-center text-sm text-gray-400 mb-2">
+          <Languages className="w-4 h-4 mr-1" />
+          <span className="mr-3">{originalLanguage}</span>
+          {dubbedLangs.length > 0 && (
+            <span className="text-purple-400">
+              (+{dubbedLangs.length} dubbed)
+            </span>
+          )}
+          <Clock className="w-4 h-4 mr-1 ml-2" />
+          <span>{duration} mins</span>
+        </div>
+
+        <p className="text-gray-300 text-sm mb-3 line-clamp-2">{description}</p>
+
+        <div className="flex flex-wrap gap-2 mb-3">
+          {genres.map(genre => (
+            <span key={genre} className="bg-gray-700 px-2 py-1 rounded-full text-xs">
+              {genreIcons[genre] || '🎬'} {genre}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex justify-between items-center">
+          <div className="flex space-x-2">
+            <button className="flex items-center text-gray-400 hover:text-green-500">
+              <ThumbsUp className="w-4 h-4 mr-1" />
+              <span>{likes}</span>
             </button>
-            </div>
+            <button className="flex items-center text-gray-400 hover:text-red-500">
+              <ThumbsDown className="w-4 h-4 mr-1" />
+              <span>{dislikes}</span>
+            </button>
+          </div>
+          <button className="text-gray-400 hover:text-red-500">
+            <Heart className="w-5 h-5" />
+          </button>
         </div>
-        </div>
-        
-    );
-    };
+      </div>
+    </div>
+  );
+};
 
-    export default MovieCard;
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    originalLanguage: PropTypes.string,
+    dubbedLangs: PropTypes.arrayOf(PropTypes.string),
+    isAdult: PropTypes.bool,
+    poster: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    description: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    likes: PropTypes.number,
+    dislikes: PropTypes.number
+  })
+};
+
+MovieCard.defaultProps = {
+  movie: {}
+};
+
+export default MovieCard;

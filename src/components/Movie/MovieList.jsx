@@ -1,26 +1,21 @@
     import { useState } from 'react';
+    import { Link } from 'react-router-dom';
     import MovieCard from './MovieCard';
     import Filter from '../Common/Filter';
-    import Search from '../Common/Search';
     import TabNavigation from '../Common/TabNavigation';
     import movies from '../../data/movies';
 
-    const MovieList = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const MovieList = ({ searchTerm }) => {
     const [selectedGenre, setSelectedGenre] = useState('All');
     const [activeCategory, setActiveCategory] = useState('All Movies');
 
-    // Get all unique genres from movies
     const allGenres = ['All', ...new Set(movies.flatMap(movie => movie.genres))];
 
-    // Filter movies based on search term and selected genre
     const filteredMovies = movies.filter(movie => {
-        const matchesSearch = movie.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        const matchesSearch = movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             movie.description.toLowerCase().includes(searchTerm.toLowerCase());
-        
         const matchesGenre = selectedGenre === 'All' || movie.genres.includes(selectedGenre);
         
-        // Additional filtering based on category
         let matchesCategory = true;
         if (activeCategory === 'Underrated') {
         matchesCategory = movie.rating < 7;
@@ -60,10 +55,6 @@
 
     return (
         <div>
-        <div className="mb-8">
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        </div>
-
         <div className="mb-6">
             <Filter 
             options={allGenres} 
@@ -83,12 +74,23 @@
         {filteredMovies.length === 0 ? (
             <div className="text-center py-10">
             <h3 className="text-xl font-semibold">No movies found</h3>
-            <p className="text-gray-400">Try changing your search or filter criteria</p>
+            <p className="text-gray-400">
+                {searchTerm ? 
+                `No results for "${searchTerm}"` : 
+                'Try changing your filter criteria'
+                }
+            </p>
             </div>
         ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredMovies.map(movie => (
-                <MovieCard key={movie.id} movie={movie} />
+                <Link 
+                to={`/movie/${movie.id}`} 
+                key={movie.id}
+                className="hover:transform hover:scale-105 transition-transform duration-300"
+                >
+                <MovieCard movie={movie} />
+                </Link>
             ))}
             </div>
         )}

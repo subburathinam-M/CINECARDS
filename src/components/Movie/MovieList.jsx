@@ -4,6 +4,7 @@
     import Filter from '../Common/Filter';
     import TabNavigation from '../Common/TabNavigation';
     import movies from '../../data/movies';
+    import GenrePopover from '../Common/GenrePopover';
 
     const MovieList = ({ searchTerm }) => {
     const [selectedGenre, setSelectedGenre] = useState('All');
@@ -14,7 +15,10 @@
     const filteredMovies = movies.filter(movie => {
         const matchesSearch = movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             movie.description.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesGenre = selectedGenre === 'All' || movie.genres.includes(selectedGenre);
+                            const matchesGenre =
+  activeCategory !== 'Genre' || selectedGenre === 'All' || movie.genres.includes(selectedGenre);
+
+
         
         let matchesCategory = true;
         if (activeCategory === 'Underrated') {
@@ -50,26 +54,35 @@
         'Tamil',
         'Top Tamil',
         'Malayalam',
-        'Telugu'
+        'Telugu',
     ];
 
     return (
         <div>
-        <div className="mb-6">
-            <Filter 
-            options={allGenres} 
-            selected={selectedGenre} 
-            onSelect={setSelectedGenre} 
-            />
-        </div>
+<div className="mb-6 flex items-center gap-4 flex-wrap">
+<TabNavigation 
+  tabs={categories} 
+  activeTab={activeCategory} 
+  onTabChange={(category) => {
+    setActiveCategory(category);
+    if (category !== 'Genre') {
+      setSelectedGenre('All'); // Reset genre filter
+    }
+  }} 
+/>
 
-        <div className="mb-8">
-            <TabNavigation 
-            tabs={categories} 
-            activeTab={activeCategory} 
-            onTabChange={setActiveCategory} 
-            />
-        </div>
+
+  <GenrePopover
+    genres={allGenres.filter(g => g !== 'All')}
+    selectedGenre={selectedGenre}  // ✅ Correct prop name
+    onSelect={(genre) => {
+      setSelectedGenre(genre || 'All');
+      setActiveCategory('Genre');
+    }}
+  />
+</div>
+
+
 
         {filteredMovies.length === 0 ? (
             <div className="text-center py-10">

@@ -1,5 +1,5 @@
     import { useParams, useNavigate } from 'react-router-dom';
-    import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages, Calendar, ArrowLeft } from 'lucide-react';
+    import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages, Calendar, ArrowLeft,Gavel,Film  } from 'lucide-react';
     import movies from '../../data/movies';
     import BackArrow from '../Common/BackArrow';
 
@@ -98,7 +98,10 @@
         {/* Movie Info Section */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
             <div className="md:col-span-2">
-            <h1 className="text-3xl font-bold mb-4">{title}</h1>
+            <div className="flex items-center mb-4"> {/* Added flex container */}
+      <Film className="w-6 h-6 text-purple-400 mr-2" />
+      <h1 className="text-3xl font-bold">{title}</h1>
+    </div>
 
             {/* Language Section - Now with Languages icon */}
             <div className="space-y-2 mb-6">

@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom';
-import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages } from 'lucide-react';
+import { Heart, ThumbsUp, ThumbsDown, Clock, Star, Languages,Film } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 // Color mapping utility
 const getLangColor = (lang) => {
   const colors = {
-    tamil: 'bg-blue-500',
-    telugu: 'bg-orange-500',
-    hindi: 'bg-green-500',
-    malayalam: 'bg-yellow-500',
-    kannada: 'bg-purple-500',
+    tamil: 'bg-green-500',
+    telugu: 'bg-orange-500',  // unchanged (you didn’t mention it)
+    hindi: 'bg-orange-500',
+    malayalam: 'bg-violet-500',
+    kannada: 'bg-purple-500', // unchanged (you didn’t mention it)
     korean: 'bg-red-500',
     spanish: 'bg-pink-500',
-    japanese: 'bg-indigo-500',
-    portuguese: 'bg-teal-500',
-    english: 'bg-gray-500'
+    japanese: 'bg-indigo-500', // unchanged
+    portuguese: 'bg-gray-500',
+    english: 'bg-blue-500',
   };
   
   const normalizedLang = (lang || '').toLowerCase();
@@ -51,6 +51,7 @@ const MovieCard = ({ movie = {} }) => {
     duration = '0',
     description = '',
     genres = [],
+    year,
     likes = 0,
     dislikes = 0
   } = movie;
@@ -91,7 +92,8 @@ const MovieCard = ({ movie = {} }) => {
 
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
-          <Link to={`/movie/${id}`} className="text-xl font-bold hover:text-blue-400">
+          <Link to={`/movie/${id}`} className="text-xl font-bold hover:text-blue-400 flex items-center">
+          <Film className="w-5 h-5 text-purple-400 mr-2" />
             {title}
           </Link>
           <div className="flex items-center bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold">
